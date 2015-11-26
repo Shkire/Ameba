@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BehavioursManager : MonoBehaviour
+public class AmebaController : MonoBehaviour
 {
 
     enum ActivationType
@@ -33,7 +33,7 @@ public class BehavioursManager : MonoBehaviour
         {
             if (Input.GetKeyDown(_key))
             {
-                foreach (AmebaBehaviour behaviour in GetComponentsInChildren<AmebaBehaviour>())
+                foreach (Ameba behaviour in GetComponentsInChildren<Ameba>())
                 {
                     behaviour.PerformBehaviour();
                 }

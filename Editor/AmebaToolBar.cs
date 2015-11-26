@@ -4,28 +4,37 @@ using UnityEditor;
 public class AmebaToolBar
 {
 
-    [MenuItem("Ameba/Behaviours/Add BehavioursManager", false, 1)]
+    [MenuItem("Ameba/Control/Add AmebaController", false, 1)]
     private static void AddBehavioursManager()
     {
         GameObject sibling = Selection.activeGameObject;
         if (sibling != null)
-            sibling.AddComponent<BehavioursManager>();
+            sibling.AddComponent<AmebaController>();
     }
 
-    [MenuItem("Ameba/Behaviours/New BehavioursManager", false, 2)]
+    [MenuItem("Ameba/Control/New AmebaController", false, 2)]
     private static void NewBehavioursManager()
     {
         GameObject created = new GameObject("BehaviourManager");
-        created.AddComponent<BehavioursManager>();
+        created.AddComponent<AmebaController>();
         GameObject sibling = Selection.activeGameObject;
         if (sibling != null)
             created.transform.SetParent(sibling.transform.parent);
     }
 
-    [MenuItem("CONTEXT/Component/Cut component")]
-    private static void CutComponent()
+    [MenuItem("Ameba/Amebas/AmebaCreate", false, 1)]
+    private static void AmebaCreate()
     {
-        
+    }
+
+    [MenuItem("Ameba/Amebas/AmebaDestroy", false, 2)]
+    private static void AmebaDestroy()
+    {
+    }
+
+    [MenuItem("Ameba/Amebas/AmebaMove", false, 21)]
+    private static void AmebaMove()
+    {
     }
 
 }
