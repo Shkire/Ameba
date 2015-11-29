@@ -18,25 +18,35 @@ public class AmebaController : MonoBehaviour
     }
 
     [SerializeField]
-    private ActivationType _activationCondition;
+    private AmebaContainer p_container;
 
     [SerializeField]
-    private string _key;
+    private ActivationType p_activationCondition;
 
     [SerializeField]
-    private Transform _target;
+    private string p_key;
 
-    // Update is called once per frame
+    [SerializeField]
+    private Transform p_target;
+
+    void Awake()
+    {
+        if (p_container == null)
+        {
+            p_container = GetComponentInChildren<AmebaContainer>();
+        }
+    }
+
     void Update()
     {
-        if (_activationCondition == ActivationType.KeyPress)
+        if (p_container == null)
+            return;
+
+        if (p_activationCondition == ActivationType.KeyPress)
         {
-            if (Input.GetKeyDown(_key))
+            if (Input.GetKeyDown(p_key))
             {
-                foreach (Ameba behaviour in GetComponentsInChildren<Ameba>())
-                {
-                    behaviour.PerformBehaviour();
-                }
+                p_container.PerformBehaviours();
             }
         }
     }

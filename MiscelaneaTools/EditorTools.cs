@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEditor;
 
-public static class EditorTools{
+public static class EditorTools
+{
 
 
 

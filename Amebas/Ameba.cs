@@ -5,7 +5,7 @@ public abstract class Ameba : MonoBehaviour
 {
 
     [SerializeField]
-    protected Transform _target;
+    protected Transform p_target;
 
     public virtual void PerformBehaviour() { }
 

@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AmebaCreate : Ameba {
+public class AmebaCreate : Ameba
+{
 
     [SerializeField]
-    private GameObject _model;
+    private GameObject p_model;
 
     [SerializeField]
-    private bool _targetRotation;
+    private bool p_targetRotation;
 
     public override void PerformBehaviour()
     {
-        if (_targetRotation)
-            Instantiate(_model, _target.position, _target.rotation);
+        if (p_target == null)
+            return;
+        if (p_targetRotation)
+            Instantiate(p_model, p_target.position, p_target.rotation);
         else
-            Instantiate(_model, _target.position, _model.transform.rotation);
+            Instantiate(p_model, p_target.position, p_model.transform.rotation);
     }
 
 }
