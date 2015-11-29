@@ -12,7 +12,7 @@ public class AmebaCreate : Ameba
 
     public override void PerformBehaviour()
     {
-        if (p_target == null)
+        if (p_target == null || p_model == null)
             return;
         if (p_targetRotation)
             Instantiate(p_model, p_target.position, p_target.rotation);

@@ -60,6 +60,12 @@ public class AmebaToolBar
         Selection.activeGameObject.AddComponent<AmebaMove>();
     }
 
+    [MenuItem("Ameba/Amebas/AmebaAudioClip")]
+    private static void AddAmebaAudioClip()
+    {
+        Selection.activeGameObject.AddComponent<AmebaAudioClip>();
+    }
+
 
     #endregion
 
@@ -103,6 +109,12 @@ public class AmebaToolBar
 
     [MenuItem("Ameba/Amebas/AmebaMove", true, 21)]
     private static bool AddAmebaMoveValidation()
+    {
+        return Selection.activeGameObject != null && (Selection.activeGameObject.GetComponent<AmebaContainer>() != null || Selection.activeGameObject.GetComponentInParent<AmebaContainer>() != null);
+    }
+
+    [MenuItem("Ameba/Amebas/AmebaAudioClip", true, 41)]
+    private static bool AddAmebaAudioClipValidation()
     {
         return Selection.activeGameObject != null && (Selection.activeGameObject.GetComponent<AmebaContainer>() != null || Selection.activeGameObject.GetComponentInParent<AmebaContainer>() != null);
     }
