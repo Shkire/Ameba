@@ -4,13 +4,14 @@ using System.Collections;
 public class AmebaController : MonoBehaviour
 {
 
-    enum ActivationType
+    public enum ActivationType
     {
         KeyPress,
         KeyRelease,
         Key,
         Timed,
         TriggerActivated,
+        TriggerKeep,
         TriggerReleased,
         CollisionEnter,
         CollisionExit,
@@ -29,11 +30,30 @@ public class AmebaController : MonoBehaviour
     [SerializeField]
     private Transform p_target;
 
+    [SerializeField]
+    private Collider p_collider;
+
     void Awake()
     {
         if (p_container == null)
-        {
             p_container = GetComponentInChildren<AmebaContainer>();
+
+        if ((p_collider != null) && (p_collider.gameObject.GetComponent<AmebaTrigger>() == null))
+        {
+            p_collider.isTrigger = true;
+            p_collider.gameObject.AddComponent<AmebaTrigger>();
+            switch (p_activationCondition)
+            {
+                case ActivationType.TriggerActivated:
+                    p_collider.gameObject.GetComponent<AmebaTrigger>().AddOnEnter(p_container);
+                    break;
+                case ActivationType.TriggerReleased:
+                    p_collider.gameObject.GetComponent<AmebaTrigger>().AddOnExit(p_container);
+                    break;
+                case ActivationType.TriggerKeep:
+                    p_collider.gameObject.GetComponent<AmebaTrigger>().AddOnStay(p_container);
+                    break;
+            }
         }
     }
 
