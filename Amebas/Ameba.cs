@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (AmebaTimer))]
 public abstract class Ameba : MonoBehaviour
 {
 
