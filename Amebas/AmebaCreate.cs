@@ -10,7 +10,7 @@ public class AmebaCreate : Ameba
     [SerializeField]
     private bool p_targetRotation;
 
-    public override void PerformBehaviour()
+    public override void PerformBehaviour(float duration)
     {
         if (p_target == null || p_model == null)
             return;

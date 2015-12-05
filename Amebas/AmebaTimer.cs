@@ -16,4 +16,12 @@ public class AmebaTimer : MonoBehaviour {
         }
     }
 
+    public float duration
+    {
+        get
+        {
+            return p_duration;
+        }
+    }
+
 }

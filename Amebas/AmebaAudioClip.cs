@@ -12,7 +12,7 @@ public class AmebaAudioClip : Ameba {
     [SerializeField]
     private bool p_forceOneShot;
 
-    public override void PerformBehaviour() 
+    public override void PerformBehaviour(float duration) 
     {
         if (p_target == null)
             return;
